@@ -1,0 +1,1 @@
+Small app for iPhone which detects kontakt beacons.
