@@ -31,7 +31,30 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        CLBeacon *detailBeacon = (CLBeacon *)self.detailItem;
+        NSString *beaconProxUUIDLabel = [NSString stringWithFormat:@"ProximityUUID: %@", [detailBeacon.proximityUUID UUIDString]];
+        self.detailProxUUIDLabel.text = beaconProxUUIDLabel;
+        NSString *beaconMajorLabel = [NSString stringWithFormat:@"Major: %ld", (long)detailBeacon.major.integerValue];
+        self.detailMajorLabel.text = beaconMajorLabel;
+        NSString *beaconMinorLabel = [NSString stringWithFormat:@"Minor: %ld", (long)detailBeacon.minor.integerValue];
+        self.detailMinorLabel.text = beaconMinorLabel;
+        NSString *beaconProximityLabel = nil;
+        switch (detailBeacon.proximity) {
+            case CLProximityImmediate:
+                beaconProximityLabel = @"Proximity: inmediate (0 - 20 cm)";
+                break;
+            case CLProximityNear:
+                beaconProximityLabel = @"Proximity: near (20cm - 2m)";
+                break;
+            case CLProximityFar:
+                beaconProximityLabel = @"Proximity: far (2m - 70m)";
+                break;
+            case CLProximityUnknown:
+            default:
+                beaconProximityLabel = @"Proximity: unknown";
+                break;
+        }
+        self.detailProximityLabel.text = beaconProximityLabel;
     }
 }
 

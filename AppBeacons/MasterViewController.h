@@ -1,13 +1,6 @@
-//
-//  MasterViewController.h
-//  AppBeacons
-//
-//  Created by Sara Subijana Gracia on 27/02/14.
-//  Copyright (c) 2014 Autentia. All rights reserved.
-//
+#import <CoreBluetooth/CoreBluetooth.h>
+#import <CoreLocation/CoreLocation.h>
 
-#import <UIKit/UIKit.h>
-
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <CLLocationManagerDelegate>
 
 @end
